@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Assignment1.DAL.Models.Ticket>
+
+@{
+    ViewData["Title"] = "ShowTickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ShowTickets</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerformanceId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NrOfPlaces)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PerformanceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrOfPlaces)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditTicket", new { id=item.TicketId }) |
+                @Html.ActionLink("Delete", "DeleteTicket", new { id=item.TicketId},new { onclick = "return confirm('Are you sure you want to delete this item?');" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
